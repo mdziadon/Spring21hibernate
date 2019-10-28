@@ -23,7 +23,6 @@ public class BookController {
     public String add() {
         Book book = new Book();
         book.setTitle("Thinking in Java");
-        book.setAuthor("Bruce Eckel");
         bookService.save(book);
         return "Book added, id = " + book.getId();
     }
