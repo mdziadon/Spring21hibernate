@@ -15,7 +15,7 @@ public class PersonDetails {
     private String street;
     private String city;
 
-    @OneToOne(mappedBy = "personDetails")
+    @OneToOne
     private Person person;
 
     public Long getId() {

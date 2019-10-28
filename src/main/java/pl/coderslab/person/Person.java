@@ -13,7 +13,7 @@ public class Person {
     private String password;
     private String email;
 
-    @OneToOne
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
     private PersonDetails personDetails;
 
     public Long getId() {
