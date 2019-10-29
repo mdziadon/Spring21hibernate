@@ -49,19 +49,22 @@ public class BookController {
     }
 
     @GetMapping("/update/{id}")
-    @ResponseBody
-    public String update(@PathVariable Long id) {
+    public String update(@PathVariable Long id, Model model) {
         Book book = bookService.findOne(id);
-        book.setTitle("Thinling in Javaaaaaa!!!");
+        model.addAttribute("book", book);
+        return "book";
+    }
+
+    @PostMapping("/update/{id}")
+    public String update(@ModelAttribute Book book) {
         bookService.update(book);
-        return "Book updated, id = " + book.getId();
+        return "redirect:../list";
     }
 
     @GetMapping("/delete/{id}")
-    @ResponseBody
     public String delete(@PathVariable Long id) {
         bookService.delete(id);
-        return "Book deleted, id = " + id;
+        return "redirect:../list";
     }
 
     @GetMapping("/find/{id}")
