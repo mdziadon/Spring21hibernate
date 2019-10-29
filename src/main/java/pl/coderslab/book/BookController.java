@@ -29,6 +29,13 @@ public class BookController {
         this.authorService = authorService;
     }
 
+    @GetMapping("/list")
+    public String getBooks(Model model) {
+        List<Book> books = bookService.findAll();
+        model.addAttribute("books", books);
+        return "bookList";
+    }
+
     @GetMapping("/add")
     public String add(Model model) {
         model.addAttribute("book", new Book());
@@ -36,10 +43,9 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    @ResponseBody
     public String add(@ModelAttribute Book book) {
         bookService.save(book);
-        return "Book added, id = " + book.getId();
+        return "redirect:list";
     }
 
     @GetMapping("/update/{id}")
