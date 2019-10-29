@@ -50,7 +50,7 @@ public class BookController {
 
     @GetMapping("/update/{id}")
     public String update(@PathVariable Long id, Model model) {
-        Book book = bookService.findOne(id);
+        Book book = bookService.findBookWithAuthors(id);
         model.addAttribute("book", book);
         return "book";
     }

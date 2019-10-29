@@ -32,7 +32,7 @@
 
     <br><br>
     <label>Authors:
-        <form:select path="authors" items="${authors}" itemLabel="lastName" itemValue="id"/>
+        <form:select path="authors" items="${authors}" itemLabel="fullName" itemValue="id"/>
     </label>
 
     <input type="submit" value="Save">
