@@ -29,7 +29,8 @@ public class AuthorService {
         return authorDao.findOne(id);
     }
 
-    public void deleteAuthor(Long id) {
+    public void delete(Long id) {
+        authorDao.deleteAuthorRelations(id);
         authorDao.delete(id);
     }
 
