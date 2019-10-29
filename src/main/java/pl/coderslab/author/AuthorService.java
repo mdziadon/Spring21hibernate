@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class AuthorService {
@@ -23,12 +25,16 @@ public class AuthorService {
         authorDao.update(author);
     }
 
-    public Author find(Long id) {
+    public Author findOne(Long id) {
         return authorDao.findOne(id);
     }
 
     public void deleteAuthor(Long id) {
         authorDao.delete(id);
+    }
+
+    public List<Author> findAll() {
+        return authorDao.findAll();
     }
 
 }

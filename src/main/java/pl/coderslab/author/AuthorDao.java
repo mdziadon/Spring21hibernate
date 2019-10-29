@@ -1,9 +1,12 @@
 package pl.coderslab.author;
 
 import org.springframework.stereotype.Repository;
+import pl.coderslab.book.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
 
 @Repository
 public class AuthorDao {
@@ -28,6 +31,11 @@ public class AuthorDao {
         if (author != null) {
             entityManager.remove(author);
         }
+    }
+
+    public List<Author> findAll() {
+        Query query = entityManager.createQuery("select a from Author a");
+        return query.getResultList();
     }
     
 }
