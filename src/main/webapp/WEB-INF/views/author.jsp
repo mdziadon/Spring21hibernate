@@ -30,6 +30,11 @@
         <form:input type="text" path="email" id="emailId"/>
         <form:errors path="email" element="div"/>
     </div>
+    <div>
+        <label for="yearOfBirthId">Year of birth:</label>
+        <form:input type="number" path="yearOfBirth" id="yearOfBirthId"/>
+        <form:errors path="yearOfBirth" element="div"/>
+    </div>
 
     <input type="submit" value="Save">
 </form:form>
