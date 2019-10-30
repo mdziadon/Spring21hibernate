@@ -61,7 +61,10 @@ public class BookController {
     }
 
     @PostMapping("/update/{id}")
-    public String update(@ModelAttribute Book book) {
+    public String update(@Valid @ModelAttribute Book book, BindingResult result) {
+        if (result.hasErrors()) {
+            return "book";
+        }
         bookService.update(book);
         return "redirect:../list";
     }
