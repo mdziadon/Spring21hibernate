@@ -37,6 +37,11 @@ public class BookDao {
         return query.getResultList();
     }
 
+    public List<Book> findAllPropositions() {
+        Query query = entityManager.createQuery("select b from Book b where b.proposition = true");
+        return query.getResultList();
+    }
+
     public List<Book> getRatingList(int rating) {
         Query query = entityManager.createQuery("select b from Book b where b.rating = :rating");
         query.setParameter("rating", rating);
