@@ -39,10 +39,7 @@ public class Book {
     private Publisher publisher;
 
     @NotEmpty(groups = BookValidationGroup.class)
-    @ManyToMany
-    @JoinTable(name = "books_authors",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    @ManyToMany(mappedBy = "books")
     private List<Author> authors;
 
     public Long getId() {

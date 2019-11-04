@@ -34,7 +34,10 @@ public class Author {
     @Age(min = 21)
     private Integer yearOfBirth;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany
+    @JoinTable(name = "authors_books",
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Book> books;
 
     public Long getId() {
