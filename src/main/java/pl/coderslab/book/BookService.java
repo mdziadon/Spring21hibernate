@@ -53,11 +53,11 @@ public class BookService {
     }
 
     public List<Book> getBooksByTitle(String title) {
-        return bookRepository.findByTitle(title);
+        return bookRepository.findByTitleQuery(title);
     }
 
     public List<Book> getBooksByCategoryId(Long categoryId){
-        return bookRepository.findByCategoryId(categoryId);
+        return bookRepository.findByCategoryIdQuery(categoryId);
     }
 
     public List<Book> getBooksByAuthorId(Long authorId) {
