@@ -2,6 +2,7 @@ package pl.coderslab.book;
 
 import org.hibernate.validator.constraints.Range;
 import pl.coderslab.author.Author;
+import pl.coderslab.category.Category;
 import pl.coderslab.publisher.Publisher;
 import pl.coderslab.validate.BookValidationGroup;
 import pl.coderslab.validate.PropositionValidationGroup;
@@ -41,6 +42,10 @@ public class Book {
     @NotEmpty(groups = BookValidationGroup.class)
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
+
+    @ManyToOne
+    private Category category;
+
 
     public Long getId() {
         return id;
@@ -104,6 +109,14 @@ public class Book {
 
     public void setProposition(boolean proposition) {
         this.proposition = proposition;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

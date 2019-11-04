@@ -51,4 +51,12 @@ public class BookService {
     public List<Book> getRatingList(int rating) {
         return bookRepository.findByRating(rating);
     }
+
+    public List<Book> getBooksByTitle(String title) {
+        return bookRepository.findByTitle(title);
+    }
+
+    public List<Book> getBooksByCategoryId(Long categoryId){
+        return bookRepository.findByCategoryId(categoryId);
+    }
 }
