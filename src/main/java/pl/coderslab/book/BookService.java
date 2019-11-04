@@ -4,7 +4,6 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.coderslab.author.Author;
 
 import java.util.List;
 
@@ -12,23 +11,23 @@ import java.util.List;
 @Transactional
 public class BookService {
 
-    private BookDao bookDao;
+    private BookRepository bookRepository;
 
     @Autowired
-    public BookService(BookDao bookDao) {
-        this.bookDao = bookDao;
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     public void save(Book book) {
-        bookDao.save(book);
+        bookRepository.save(book);
     }
 
     public void update(Book book) {
-        bookDao.update(book);
+        bookRepository.save(book);
     }
 
     public Book findOne(Long id) {
-        return bookDao.findOne(id);
+        return bookRepository.findById(id).orElse(null);
     }
 
     public Book findBookWithAuthors(Long id) {
@@ -38,18 +37,18 @@ public class BookService {
     }
 
     public void delete(Long id) {
-       bookDao.delete(id);
+        bookRepository.deleteById(id);
     }
 
     public List<Book> findAll() {
-        return bookDao.findAll();
+        return bookRepository.findAll();
     }
 
     public List<Book> findAllPropositions() {
-        return bookDao.findAllPropositions();
+        return bookRepository.findByPropositionTrue();
     }
 
     public List<Book> getRatingList(int rating) {
-        return bookDao.getRatingList(rating);
+        return bookRepository.findByRating(rating);
     }
 }
