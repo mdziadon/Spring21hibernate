@@ -71,4 +71,12 @@ public class BookService {
     public Book getFirstBookByCategoryId(Long categoryId) {
         return bookRepository.findFirstByCategoryIdOrderByTitle(categoryId);
     }
+
+    public void resetRating(int rating) {
+        bookRepository.resetRatingQuery(rating);
+    }
+
+    public void deleteByTitle(String title) {
+        bookRepository.deleteByTitle(title);
+    }
 }

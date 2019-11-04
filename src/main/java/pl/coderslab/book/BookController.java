@@ -88,6 +88,19 @@ public class BookController {
         return "Book not found";
     }
 
+    @GetMapping("/resetRating/{rating}")
+    public String resetRating(@PathVariable int rating) {
+        bookService.resetRating(rating);
+        return "redirect:../list";
+    }
+
+    @GetMapping("/deleteByTitle/{title}")
+    public String deleteByTitle(@PathVariable String title) {
+        bookService.deleteByTitle(title);
+        return "redirect:../list";
+    }
+
+
     @ModelAttribute("publishers")
     public List<Publisher> getPublishers() {
         return publisherService.findAll();
