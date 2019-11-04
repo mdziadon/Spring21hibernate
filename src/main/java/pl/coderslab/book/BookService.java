@@ -59,4 +59,16 @@ public class BookService {
     public List<Book> getBooksByCategoryId(Long categoryId){
         return bookRepository.findByCategoryId(categoryId);
     }
+
+    public List<Book> getBooksByAuthorId(Long authorId) {
+        return bookRepository.findByAuthorsId(authorId);
+    }
+
+    public List<Book> getBooksByByPublisherId(Long publisherId) {
+        return bookRepository.findByPublisherId(publisherId);
+    }
+
+    public Book getFirstBookByCategoryId(Long categoryId) {
+        return bookRepository.findFirstByCategoryIdOrderByTitle(categoryId);
+    }
 }

@@ -40,7 +40,10 @@ public class Book {
     private Publisher publisher;
 
     @NotEmpty(groups = BookValidationGroup.class)
-    @ManyToMany(mappedBy = "books")
+    @ManyToMany
+    @JoinTable(name = "books_authors",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> authors;
 
     @ManyToOne

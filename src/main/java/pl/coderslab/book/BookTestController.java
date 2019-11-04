@@ -33,4 +33,11 @@ public class BookTestController {
         List<Book> books = bookService.getBooksByCategoryId(categoryId);
         return books.toString();
     }
+
+    @GetMapping("/author/{authorId}")
+    @ResponseBody
+    public String getBooksByAuthor(@PathVariable Long authorId) {
+        List<Book> books = bookService.getBooksByAuthorId(authorId);
+        return books.toString();
+    }
 }
