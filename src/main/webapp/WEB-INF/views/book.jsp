@@ -5,52 +5,86 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
+    <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
+    <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 </head>
 <body>
 
-<form:form method="post" modelAttribute="book">
-    <label>Title:
-        <form:input path="title"/>
-        <form:errors path="title" element="div" cssStyle="color:red"/>
-    </label>
+<%@include file="/WEB-INF/views/header.jspf"%>
 
-    <br><br>
-    <label>Rating:
-        <form:select path="rating">
-            <c:forEach begin="1" end="10" var="number">
-                <form:option value="${number}"/>
-            </c:forEach>
-        </form:select>
-        <form:errors path="rating" element="div" cssStyle="color:red"/>
-    </label>
+<div class="container">
 
-    <br><br>
-    <label>Pages:
-        <form:input path="pages"/>
-        <form:errors path="pages" element="div" cssStyle="color:red"/>
-    </label>
+    <header>${empty book.id ? 'Add Book' : 'Edit Book'}</header>
 
-    <br><br>
-    <label>Description:
-        <form:input path="description"/>
-        <form:errors path="description" element="div" cssStyle="color:red"/>
-    </label>
+    <div class="card">
+        <div class="card-body">
+            <a href="/books/list" class="btn btn-primary">Back</a>
+        </div>
+    </div>
 
-    <br><br>
-    <label>Publisher:
-        <form:select path="publisher.id" items="${publishers}" itemLabel="name" itemValue="id"/>
-        <form:errors path="publisher" element="div" cssStyle="color:red"/>
-    </label>
+    <div class="card mt-4">
+        <div class="card-body">
+        <form:form method="post" modelAttribute="book">
 
-    <br><br>
-    <label>Authors:
-        <form:select path="authors" items="${authors}" itemLabel="fullName" itemValue="id"/>
-        <form:errors path="authors" element="div" cssStyle="color:red"/>
-    </label>
+            <div class="row">
 
-    <br><br>
-    <input type="submit" value="Save">
-</form:form>
+                <div class="form-group col-md-6">
+                    <label for="titleId">Title:</label>
+                    <form:input path="title" class="form-control" id="titleId"/>
+                    <form:errors path="title" element="div" cssClass="error"/>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="ratingId">Rating:</label>
+                    <form:select path="rating" class="form-control" id="ratingId">
+                        <c:forEach begin="1" end="10" var="number">
+                            <form:option value="${number}"/>
+                        </c:forEach>
+                    </form:select>
+                    <form:errors path="rating" element="div" cssClass="error"/>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="pagesId">Pages:</label>
+                    <form:input path="pages" class="form-control" id="pagesId"/>
+                    <form:errors path="pages" element="div" cssClass="error"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label for="descriptionId">Description:</label>
+                    <form:textarea rows="3" cols="60" path="description" class="form-control" id="descriptionId"/>
+                    <form:errors path="description" element="div" cssClass="error"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="publisherId">Publisher:</label>
+                    <form:select path="publisher.id" items="${publishers}" itemLabel="name" itemValue="id" class="form-control" id="publisherId"/>
+                    <form:errors path="publisher" element="div" cssClass="error"/>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="authorsId">Authors:</label>
+                    <form:select path="authors" items="${authors}" itemLabel="fullName" itemValue="id" class="form-control" id="authorsId"/>
+                    <form:errors path="authors" element="div" cssClass="error"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                <input type="submit" value="Save" class="btn btn-success">
+                </div>
+            </div>
+        </form:form>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
