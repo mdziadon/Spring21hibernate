@@ -14,6 +14,9 @@ public class Category {
 
     private String description;
 
+    @ManyToOne
+    private Category parent;
+
     public Long getId() {
         return id;
     }
@@ -36,5 +39,13 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Category getParent() {
+        return parent;
+    }
+
+    public void setParent(Category parent) {
+        this.parent = parent;
     }
 }
